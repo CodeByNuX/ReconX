@@ -20,15 +20,20 @@ def home(request):
             try:
                 #
 
-                if is_domain(query):
+                if is_domain(query):                                  
+
+                    data = whois_lookup(query)
+
+                elif is_ipv4(query):                    
+                    
                     whois_data = whois_lookup(query)
                     ip_risk_data = ip_risk_lookup(query)
                     
-                    data = {whois_data,ip_risk_data}
 
-                elif is_ipv4(query):
+                    data = {'whois':whois_data,'ip_risk':ip_risk_data}
                     
-                    data = ip_risk_lookup(query)
+
+
                 else:
                     data = None
                     error = (

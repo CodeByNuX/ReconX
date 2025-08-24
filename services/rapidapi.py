@@ -41,5 +41,15 @@ def whois_lookup(query:str):
 
 def ip_risk_lookup(query):
     url = f'https://{IP_RISK_API_HOST}/v1/ipsight/{query}'
+
+    headers = {
+        'x-rapidapi-key': RAPIDAPI_KEY,
+        'x-rapidapi-host': IP_RISK_API_HOST,
+        'accept': 'application/json',
+    }
+
+    response = requests.get(url,headers=headers,timeout=(10,15))
+    response.raise_for_status()
+    return response.json()
  
 
