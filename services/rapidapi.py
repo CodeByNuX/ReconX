@@ -41,26 +41,5 @@ def whois_lookup(query:str):
 
 def ip_risk_lookup(query):
     pass
-"""
-def lookup(query:str):
-    
-    # if query is None, it becomes an empty string.
-    query = (query or "").strip()
-
-    # if query is None, empty, return message
-    if not query:
-        return (
-            'You need to pass a valid domain or IPv4 address.\n\n'
-            'Examples:\n www.xyz.com\n 1.2.3.4\n'
-            )
-    
-    # validate if we have an actual domain or good ipv4 address, if not return message
-    if not (_is_domain(query) or _is_ipv4(query)):
-        return (
-            'You need to pass a valid domain or IPv4 address.\n\n'
-            'Examples:\n www.xyz.com\n 1.2.3.4\n'
-            )
-    
-    return _whois_lookup(query)
-"""    
+ 
 
