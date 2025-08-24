@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from services.rapidapi import lookup
 
@@ -9,7 +10,14 @@ def home(request):
     if request.method == 'POST':
         query = (request.POST.get('query') or '').strip()
         try:
-            result = lookup(query)
+            data = lookup(query)
+            
+            if isinstance(data, (dict,list)):
+                # pretty print / indent
+                result = json.dumps(data,indent=2,sort_keys=True)
+            else:
+                result = str(data)
+            
             
         except Exception as e:
             error = f"{e}"
