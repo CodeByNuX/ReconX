@@ -13,18 +13,18 @@ IP_RISK_API_HOST = os.getenv('IP_RISK_API_HOST', 'ip-geolocation-and-threat-dete
 
 
 
-def _is_domain(query:str)->bool:
+def is_domain(query:str)->bool:
     _domain_regex = re.compile('^(?!-)([A-Za-z0-9-]{1,63}\.)+[A-Za-z]{2,63}$')
     return bool(_domain_regex.match(query))
 
-def _is_ipv4(query:str)->bool:
+def is_ipv4(query:str)->bool:
     try:
         ipaddress.ip_address(query)
         return True
     except ValueError:
         return False
 
-def _whois_lookup(query:str):
+def whois_lookup(query:str):
 
     url = f'https://{WHOIS_API_HOST}/whois'
     querystring = {'q': query}
@@ -39,7 +39,9 @@ def _whois_lookup(query:str):
     response.raise_for_status()
     return response.json()
 
-
+def ip_risk_lookup(query):
+    pass
+"""
 def lookup(query:str):
     
     # if query is None, it becomes an empty string.
@@ -60,5 +62,5 @@ def lookup(query:str):
             )
     
     return _whois_lookup(query)
-    
+"""    
 
