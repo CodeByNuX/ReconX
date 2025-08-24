@@ -21,12 +21,14 @@ def home(request):
                 #
 
                 if is_domain(query):
-                    data = whois_lookup(query)
-                elif is_ipv4(query):
                     whois_data = whois_lookup(query)
                     ip_risk_data = ip_risk_lookup(query)
-
+                    
                     data = {whois_data,ip_risk_data}
+
+                elif is_ipv4(query):
+                    
+                    data = ip_risk_lookup(query)
                 else:
                     data = None
                     error = (

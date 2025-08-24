@@ -40,6 +40,6 @@ def whois_lookup(query:str):
     return response.json()
 
 def ip_risk_lookup(query):
-    pass
+    url = f'https://{IP_RISK_API_HOST}/v1/ipsight/{query}'
  
 
