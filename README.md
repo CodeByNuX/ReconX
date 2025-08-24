@@ -99,7 +99,7 @@ Then open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 ## Security Notice
 
 ReconX does not include an authentication system. It is intended for local or lab use only.
-Do not expose this application directly to the internet.
+Do not expose this application directly to the internet.  If you plan to deploy it beyound you own machine, place it behind a reverse proxy with proper access control.
 
 ---
 
