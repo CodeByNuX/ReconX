@@ -18,16 +18,19 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-fallback-secret")
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dev-fallback-secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 # Application definition
 
@@ -68,6 +71,7 @@ TEMPLATES = [
         },
     },
 ]
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
@@ -125,6 +129,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ReconX / RapidAPI settings
-RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")
-WHOIS_API_HOST = os.getenv("WHOIS_API_HOST")
-IP_RISK_API_HOST = os.getenv("IP_RISK_API_HOST")
+RAPIDAPI_KEY = os.getenv('RAPIDAPI_KEY')
+WHOIS_API_HOST = os.getenv('WHOIS_API_HOST')
+IP_RISK_API_HOST = os.getenv('IP_RISK_API_HOST')

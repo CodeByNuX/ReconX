@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Lookup</h2>
+    <p class="muted">Enter a domain (e.g. example.com) or an IP (e.g. 8.8.8.8)</p>
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <input type="text" name="query" placeholder="domain or IP" required>
+        <button type="submit">Search</button>
+      </div>
+    </form>
+
+    {% if result %}
+      <hr>
+      <h3>Result</h3>
+      <pre>{{ result|safe }}</pre>
+    {% endif %}
+
+    {% if error %}
+      <hr>
+      <h3 style='color:#b00020'></h3>
+      <pre>{{ error }}</pre>
+    {% endif %}
+  </div>
+{% endblock %}

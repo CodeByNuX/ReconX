@@ -1,0 +1,38 @@
+﻿domain_validation
+-----------------
+
+    ^(?!-)([A-Za-z0-9-]{1,63}\.)+[A-Za-z]{2,63}$
+
+Options: Case sensitive; Exact spacing; Dot doesn’t match line breaks; ^$ don’t match at line breaks; Regex syntax only
+
+* [Assert position at the beginning of the string][1] `^`
+* [Assert that it is impossible to match the regex below starting at this position (negative lookahead)][2] `(?!-)`
+    * [Match the character “-” literally][3] `-`
+* [Match the regex below and capture its match into backreference number 1][4] `([A-Za-z0-9-]{1,63}\.)+`
+    * [Between one and unlimited times, as many times as possible, giving back as needed (greedy)][5] `+`
+        * [You repeated the capturing group itself.  The group will capture only the last iteration.  Put a capturing group around the repeated group to capture all iterations.][6] `+`
+        * [Or, if you don’t want to capture anything, replace the capturing group with a non-capturing group to make your regex more efficient.][6]
+    * [Match a single character present in the list below][7] `[A-Za-z0-9-]{1,63}`
+        * [Between one and 63 times, as many times as possible, giving back as needed (greedy)][8] `{1,63}`
+        * [A character in the range between “A” and “Z” (case sensitive)][7] `A-Z`
+        * [A character in the range between “a” and “z” (case sensitive)][7] `a-z`
+        * [A character in the range between “0” and “9”][7] `0-9`
+        * [The literal character “-”][3] `-`
+    * [Match the character “.” literally][9] `\.`
+* [Match a single character present in the list below][7] `[A-Za-z]{2,63}`
+    * [Between 2 and 63 times, as many times as possible, giving back as needed (greedy)][8] `{2,63}`
+    * [A character in the range between “A” and “Z” (case sensitive)][7] `A-Z`
+    * [A character in the range between “a” and “z” (case sensitive)][7] `a-z`
+* [Assert position at the end of the string, or before the line break at the end of the string, if any (line feed)][1] `$`
+
+Created with [RegexBuddy](https://www.regexbuddy.com/)
+
+[1]: https://www.regular-expressions.info/anchors.html
+[2]: https://www.regular-expressions.info/lookaround.html
+[3]: https://www.regular-expressions.info/characters.html
+[4]: https://www.regular-expressions.info/brackets.html
+[5]: https://www.regular-expressions.info/repeat.html
+[6]: https://www.regular-expressions.info/captureall.html
+[7]: https://www.regular-expressions.info/charclass.html
+[8]: https://www.regular-expressions.info/repeat.html#limit
+[9]: https://www.regular-expressions.info/characters.html#special
