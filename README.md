@@ -70,17 +70,17 @@ Then open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
 ## Usage
 
-- Enter a domain (e.g., `example.com`) → WHOIS lookup  
-- Enter an IP (e.g., `8.8.8.8`) → WHOIS and IP risk check  
+- Enter a domain (e.g., `example.com`) -> WHOIS lookup  
+- Enter an IP (e.g., `8.8.8.8`) -> WHOIS and IP risk check  
 - Results are returned as JSON  
 
 ---
 
 ## Error Handling
 
-- Empty input → usage message in the browser  
-- Invalid domain/IP → validation error  
-- Timeout or failed request → JSON error object, for example:  
+- Empty input -> usage message in the browser  
+- Invalid domain/IP -> validation error  
+- Timeout or failed request -> JSON error object, for example:  
 
 ```json
 {"error": "Request to API timed out"}
@@ -93,6 +93,13 @@ Then open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 - Improve JSON display formatting  
 - Add export functionality (CSV/JSON)  
 - Support for additional RapidAPI integrations  
+
+---
+
+## Security Notice
+
+ReconX does not include an authentication system. It is intended for local or lab use only.
+Do not expose this application directly to the internet.
 
 ---
 
