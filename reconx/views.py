@@ -8,6 +8,8 @@ def home(request):
     error = None
 
     if request.method == 'POST':
+        
+        
         query = (request.POST.get('query') or '').strip()
         
         if not query:
@@ -16,10 +18,9 @@ def home(request):
                 'Examples:\n www.xyz.com\n 1.2.3.4\n'
             )
         else:
-            #
+            
             try:
-                #
-
+                
                 if is_domain(query):                                  
 
                     data = whois_lookup(query)
