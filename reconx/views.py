@@ -9,8 +9,9 @@ def home(request):
 
     if request.method == 'POST':
         
-        
+        # if query is none, then empty string
         query = (request.POST.get('query') or '').strip()
+        
         
         if not query:
             error = (                
@@ -20,7 +21,7 @@ def home(request):
         else:
             
             try:
-                
+                                
                 if is_domain(query):                                  
 
                     data = whois_lookup(query)
@@ -29,8 +30,8 @@ def home(request):
                     
                     whois_data = whois_lookup(query)
                     ip_risk_data = ip_risk_lookup(query)
-                    
 
+                    # dict into dict
                     data = {'whois':whois_data,'ip_risk':ip_risk_data}
                     
 
@@ -44,6 +45,7 @@ def home(request):
                 
                 if data is not None:
                     if isinstance(data, (dict,list)):
+                        # pretty print
                         result = json.dumps(data,indent=2,sort_keys=True)
                     else:
                         result = str(data)
